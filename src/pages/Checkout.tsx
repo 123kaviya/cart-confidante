@@ -103,29 +103,29 @@ export default function CheckoutPage() {
 
               {method === "card" && (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  <input value={nameOnCard} onChange={(e) => setNameOnCard(e.target.value)} className="rounded-xl border border-slate-300 px-3 py-2.5 text-sm" placeholder="Name on card" />
-                  <input value={cardNumber} onChange={(e) => setCardNumber(e.target.value)} className="rounded-xl border border-slate-300 px-3 py-2.5 text-sm" placeholder="Card number (16 digits)" />
-                  <input value={expiry} onChange={(e) => setExpiry(e.target.value)} className="rounded-xl border border-slate-300 px-3 py-2.5 text-sm" placeholder="MM/YY" />
-                  <input value={cvv} onChange={(e) => setCvv(e.target.value)} className="rounded-xl border border-slate-300 px-3 py-2.5 text-sm" placeholder="CVV" />
+                  <input value={nameOnCard} onChange={(e) => setNameOnCard(e.target.value)} className="rounded-xl border border-slate-300 px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400" placeholder="Name on card" />
+                  <input value={cardNumber} onChange={(e) => setCardNumber(e.target.value)} className="rounded-xl border border-slate-300 px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400" placeholder="Card number (16 digits)" />
+                  <input value={expiry} onChange={(e) => setExpiry(e.target.value)} className="rounded-xl border border-slate-300 px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400" placeholder="MM/YY" />
+                  <input value={cvv} onChange={(e) => setCvv(e.target.value)} className="rounded-xl border border-slate-300 px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400" placeholder="CVV" />
                 </div>
               )}
 
-              {method === "upi" && <input value={upiId} onChange={(e) => setUpiId(e.target.value)} className="w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm" placeholder="yourname@bank" />}
+              {method === "upi" && <input value={upiId} onChange={(e) => setUpiId(e.target.value)} className="w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400" placeholder="yourname@bank" />}
 
               {method === "netbanking" && (
-                <select value={bank} onChange={(e) => setBank(e.target.value)} className="w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm bg-white">
+                <select value={bank} onChange={(e) => setBank(e.target.value)} className="w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm text-slate-900 bg-white">
                   <option>HDFC Bank</option><option>ICICI Bank</option><option>SBI</option><option>Axis Bank</option><option>Kotak</option>
                 </select>
               )}
 
               {method === "wallet" && (
-                <select value={wallet} onChange={(e) => setWallet(e.target.value)} className="w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm bg-white">
+                <select value={wallet} onChange={(e) => setWallet(e.target.value)} className="w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm text-slate-900 bg-white">
                   <option>Paytm</option><option>PhonePe Wallet</option><option>Amazon Pay</option><option>MobiKwik</option>
                 </select>
               )}
 
-              <textarea value={address} onChange={(e) => setAddress(e.target.value)} className="w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm" rows={3} placeholder="Delivery address" />
-              <input value={phone} onChange={(e) => setPhone(e.target.value)} className="w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm" placeholder="Phone number" />
+              <textarea value={address} onChange={(e) => setAddress(e.target.value)} className="w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400" rows={3} placeholder="Delivery address" />
+              <input value={phone} onChange={(e) => setPhone(e.target.value)} className="w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400" placeholder="Phone number" />
 
               {error && <p className="text-xs text-red-600 bg-red-50 border border-red-200 rounded-lg px-3 py-2">{error}</p>}
 
