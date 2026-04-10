@@ -2,104 +2,82 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
+* {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
+body {
+  background:
+    radial-gradient(circle at 10% 15%, rgba(251, 191, 36, 0.25), transparent 28%),
+    radial-gradient(circle at 85% 5%, rgba(56, 189, 248, 0.22), transparent 30%),
+    radial-gradient(circle at 75% 80%, rgba(52, 211, 153, 0.2), transparent 32%),
+    linear-gradient(180deg, #fff8ea 0%, #f3f8ff 48%, #ecfeff 100%);
+  color: #0f172a;
+  -webkit-font-smoothing: antialiased;
+}
 
-  body {
-    @apply bg-background text-foreground;
-  }
+/* Thin custom scrollbar */
+.scrollbar-thin::-webkit-scrollbar { height: 4px; width: 4px; }
+.scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
+.scrollbar-thin::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+
+/* Message slide-in */
+@keyframes msg-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.msg-appear { animation: msg-in 0.25s ease-out; }
+
+/* Hero gradient text */
+.gradient-text {
+  background: linear-gradient(120deg, #0ea5e9 0%, #2563eb 35%, #db2777 70%, #f97316 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass-surface {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(8px);
+}
+
+.dark-theme body {
+  background:
+    radial-gradient(circle at 14% 12%, rgba(14, 165, 233, 0.2), transparent 30%),
+    radial-gradient(circle at 82% 8%, rgba(217, 70, 239, 0.16), transparent 34%),
+    linear-gradient(180deg, #0f172a 0%, #111827 55%, #020617 100%);
+  color: #e2e8f0;
+}
+
+.dark-theme .glass-surface {
+  background: rgba(15, 23, 42, 0.72);
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+.dark-theme .text-slate-900 { color: #f8fafc !important; }
+.dark-theme .text-slate-800 { color: #e2e8f0 !important; }
+.dark-theme .text-slate-700 { color: #cbd5e1 !important; }
+.dark-theme .text-slate-600 { color: #cbd5e1 !important; }
+.dark-theme .text-slate-500 { color: #94a3b8 !important; }
+.dark-theme .text-slate-400 { color: #94a3b8 !important; }
+
+.dark-theme .bg-white,
+.dark-theme .bg-white\/90,
+.dark-theme .bg-white\/95,
+.dark-theme .bg-white\/80,
+.dark-theme .bg-white\/70 {
+  background-color: rgba(15, 23, 42, 0.75) !important;
+}
+
+.dark-theme .border-slate-200,
+.dark-theme .border-slate-100,
+.dark-theme .border-white,
+.dark-theme .border-white\/70 {
+  border-color: rgba(148, 163, 184, 0.3) !important;
+}
+
+.dark-theme .bg-slate-50,
+.dark-theme .bg-slate-100 {
+  background-color: rgba(30, 41, 59, 0.9) !important;
 }
