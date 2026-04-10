@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Tag } from "lucide-react";
 import { fetchProducts, type Product } from "@/lib/api";
+import { MOCK_PRODUCTS } from "@/lib/mock-products";
 import { ProductCard } from "@/components/ProductCard";
 
 const CATEGORIES = ["All", "Deals", "Audio", "Accessories", "Peripherals", "Wearables"];
@@ -20,8 +21,8 @@ export function FeaturedProducts({ onAddToCart, searchQuery = "", navFilter }: F
 
   useEffect(() => {
     fetchProducts()
-      .then(setProducts)
-      .catch(console.error)
+      .then((data) => setProducts(data.length > 0 ? data : MOCK_PRODUCTS))
+      .catch(() => setProducts(MOCK_PRODUCTS))
       .finally(() => setLoading(false));
   }, []);
 
