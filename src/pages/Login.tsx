@@ -97,7 +97,7 @@ export default function LoginPage() {
       if (password !== confirmPassword) { setError("Passwords do not match."); return; }
 
       const result = registerEmailAccount({ name: name.trim(), email, phone: phone.trim(), dob, password });
-      if (!result.ok) { setError(result.message); return; }
+      if (!result.ok) { setError((result as { ok: false; message: string }).message); return; }
 
       setAuthUser({ id: result.account.id, name: result.account.name, email: result.account.email, provider: "email" });
       saveUserProfile({ name: result.account.name, email: result.account.email, phone: result.account.phone, dob: result.account.dob, password: result.account.password, gender: "", theme: "dark" });
@@ -106,7 +106,7 @@ export default function LoginPage() {
     }
 
     const loginResult = loginWithEmailPassword(email, password);
-    if (!loginResult.ok) { setError(loginResult.message); return; }
+    if (!loginResult.ok) { setError((loginResult as { ok: false; message: string }).message); return; }
 
     setAuthUser({ id: loginResult.account.id, name: loginResult.account.name, email: loginResult.account.email, provider: "email" });
     saveUserProfile({ name: loginResult.account.name, email: loginResult.account.email, phone: loginResult.account.phone, dob: loginResult.account.dob, password: loginResult.account.password, gender: "", theme: getUserProfile().theme });
